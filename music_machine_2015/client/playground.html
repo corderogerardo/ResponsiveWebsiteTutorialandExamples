@@ -1,24 +1,384 @@
 <template name="playground">
 
-<br><br><br>
 <!-- Remember - if you want to control functions globaly, don't declare them as var. Just name them. -->
 
-<button class="startButton">DAC</button><br><br>
-<br>Track 1		<button class="myButton1">ON</button>
-<button class="myButton2">OFF</button>
-<br>Track 2		<button class="myButton3">ON</button>
- <button class="myButton4">OFF</button>
-<br>Track 3		<button class="myButton5">ON</button>
- <button class="myButton6">OFF</button>
+<fieldset>
+	<legend>Let's play!!	
+		<button class="startButton" aria-label="DAC">
+		{{#if isStartingDac}}
+			<span class="glyphicon glyphicon glyphicon-pause" 
+				  aria-hidden="true">
+			 </span>	
+		{{else}}
+			<span class="glyphicon glyphicon-play-circle" 
+				  aria-hidden="true">
+			</span>			
+		{{/if}}
 
- <br>
+		</button>
+	</legend>
 
- <h2> {{startdac}} {{drums}} {{bass}} {{arp}} </h2>
+    <div class="row">
+	<div class="col-xs-1">
+		<span class="glyphicon glyphicon glyphicon-pause" 
+				  aria-hidden="true">
+		</span>	
+	</div>
+    <div class="col-xs-10">	
+ 		<div id="slider1"></div>
+ 	</div>
+ 	<div class="col-xs-1">
+		<span class="glyphicon glyphicon glyphicon glyphicon glyphicon-forward" 
+				  aria-hidden="true">
+		</span>	
+	</div>
+	</div>
+</fieldset>
+<br>
+
+<fieldset>
+	<legend>Drums1</legend>
+<div class="row">
+<div class="col-xs-1">
+	<button class="drums1Button">
+		{{#if isStartingDrums1}}
+			<span class="glyphicon glyphicon glyphicon glyphicon-volume-up" 
+				  aria-hidden="true">
+			 </span>	
+
+		{{else}}
+			<span class="glyphicon glyphicon glyphicon-volume-off" 
+				  aria-hidden="true">
+			</span>			
+		{{/if}}	
+	</button>	
+</div>
+<div class="col-xs-11">
+
+	<div id="drums1Slider"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon-pause" 
+				  aria-hidden="true">
+	</span>	
+</div>
+<div class="col-xs-10">
+	<div id="drums1SpeedSlider"></div>
+</div>
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon glyphicon glyphicon-forward" 
+				  aria-hidden="true">
+	</span>	
+</div>
+</div>
+</fieldset>
 
 <br>
-  <div id="slider1"></div>
-  <br>
-  Current Speed = {{sliderVal1}}
 
+<fieldset>
+	<legend>Drums2</legend>
+<div class="row">
+<div class="col-xs-1">
+	<button class="drums2Button">
+		{{#if isStartingDrums2}}
+			<span class="glyphicon glyphicon glyphicon glyphicon-volume-up" 
+				  aria-hidden="true">
+			 </span>	
+
+		{{else}}
+			<span class="glyphicon glyphicon glyphicon-volume-off" 
+				  aria-hidden="true">
+			</span>			
+		{{/if}}	
+	</button>	
+</div>
+<div class="col-xs-11">
+
+	<div id="drums2Slider"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon-pause" 
+				  aria-hidden="true">
+	</span>	
+</div>
+<div class="col-xs-10">
+	<div id="drums2SpeedSlider"></div>
+</div>
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon glyphicon glyphicon-forward" 
+				  aria-hidden="true">
+	</span>	
+</div>
+</div>
+</fieldset>
+
+<br>
+
+<fieldset>
+	<legend>SlowDrums</legend>
+<div class="row">
+<div class="col-xs-1">
+	<button class="slowdrumsButton">
+		{{#if isStartingSlowdrums}}
+			<span class="glyphicon glyphicon glyphicon glyphicon-volume-up" 
+				  aria-hidden="true">
+			 </span>	
+		{{else}}
+			<span class="glyphicon glyphicon glyphicon-volume-off" 
+				  aria-hidden="true">
+			</span>			
+		{{/if}}	
+	</button>	
+</div>
+<div class="col-xs-11">
+	<div id="slowdrumsSlider"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon-pause" 
+				  aria-hidden="true">
+	</span>	
+</div>
+<div class="col-xs-10">
+	<div id="slowdrumsSpeedSlider"></div>
+</div>
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon glyphicon glyphicon-forward" 
+				  aria-hidden="true">
+	</span>	
+</div>
+</div>
+</fieldset>
+
+<br>
+
+<fieldset>
+	<legend>Bassline</legend>
+<div class="row">
+<div class="col-xs-1">
+	<button class="basslineButton">
+		{{#if isStartingBassline}}
+			<span class="glyphicon glyphicon glyphicon glyphicon-volume-up" 
+				  aria-hidden="true">
+			 </span>	
+		{{else}}
+			<span class="glyphicon glyphicon glyphicon-volume-off" 
+				  aria-hidden="true">
+			</span>			
+		{{/if}}	
+	</button>	
+</div>
+<div class="col-xs-11">
+	<div id="basslineSlider"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon-pause" 
+				  aria-hidden="true">
+	</span>	
+</div>
+<div class="col-xs-10">
+	<div id="basslineSpeedSlider"></div>
+</div>
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon glyphicon glyphicon-forward" 
+				  aria-hidden="true">
+	</span>	
+</div>
+</div>
+</fieldset>
+
+<br>
+
+<fieldset>
+	<legend>Chords</legend>
+<div class="row">
+<div class="col-xs-1">
+	<button class="chordsButton">
+		{{#if isStartingChords}}
+			<span class="glyphicon glyphicon glyphicon glyphicon-volume-up" 
+				  aria-hidden="true">
+			 </span>	
+		{{else}}
+			<span class="glyphicon glyphicon glyphicon-volume-off" 
+				  aria-hidden="true">
+			</span>			
+		{{/if}}	
+	</button>	
+</div>
+<div class="col-xs-11">
+	<div id="chordsSlider"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon-pause" 
+				  aria-hidden="true">
+	</span>	
+</div>
+<div class="col-xs-10">
+	<div id="chordsSpeedSlider"></div>
+</div>
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon glyphicon glyphicon-forward" 
+				  aria-hidden="true">
+	</span>	
+</div>
+</div>
+</fieldset>           
+
+<br>
+
+<fieldset>
+	<legend>Arp1</legend>
+<div class="row">
+<div class="col-xs-1">
+	<button class="arp1Button">
+		{{#if isStartingArp1}}
+			<span class="glyphicon glyphicon glyphicon glyphicon-volume-up" 
+				  aria-hidden="true">
+			 </span>	
+		{{else}}
+			<span class="glyphicon glyphicon glyphicon-volume-off" 
+				  aria-hidden="true">
+			</span>			
+		{{/if}}	
+	</button>	
+</div>
+<div class="col-xs-11">
+	<div id="arp1Slider"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon-pause" 
+				  aria-hidden="true">
+	</span>	
+</div>
+<div class="col-xs-10">
+	<div id="arp1SpeedSlider"></div>
+</div>
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon glyphicon glyphicon-forward" 
+				  aria-hidden="true">
+	</span>	
+</div>
+</div>
+</fieldset>           
+
+<br>
+
+<fieldset>
+	<legend>Arp2</legend>
+<div class="row">
+<div class="col-xs-1">
+	<button class="arp2Button">
+		{{#if isStartingArp2}}
+			<span class="glyphicon glyphicon glyphicon glyphicon-volume-up" 
+				  aria-hidden="true">
+			 </span>	
+		{{else}}
+			<span class="glyphicon glyphicon glyphicon-volume-off" 
+				  aria-hidden="true">
+			</span>			
+		{{/if}}	
+	</button>	
+</div>
+<div class="col-xs-11">
+	<div id="arp2Slider"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon-pause" 
+				  aria-hidden="true">
+	</span>	
+</div>
+<div class="col-xs-10">
+	<div id="arp2SpeedSlider"></div>
+</div>
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon glyphicon glyphicon-forward" 
+				  aria-hidden="true">
+	</span>	
+</div>
+</div>
+</fieldset>           
+
+<br>
+
+<fieldset>
+	<legend>Vibes</legend>
+<div class="row">
+<div class="col-xs-1">
+	<button class="vibesButton">
+		{{#if isStartingVibes}}
+			<span class="glyphicon glyphicon glyphicon glyphicon-volume-up" 
+				  aria-hidden="true">
+			 </span>	
+		{{else}}
+			<span class="glyphicon glyphicon glyphicon-volume-off" 
+				  aria-hidden="true">
+			</span>			
+		{{/if}}	
+	</button>	
+</div>
+<div class="col-xs-11">
+	<div id="vibesSlider"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon-pause" 
+				  aria-hidden="true">
+	</span>	
+</div>
+<div class="col-xs-10">
+	<div id="vibesSpeedSlider"></div>
+</div>
+<div class="col-xs-1">
+	<span class="glyphicon glyphicon glyphicon glyphicon glyphicon-forward" 
+				  aria-hidden="true">
+	</span>	
+</div>
+</div>
+</fieldset>           
+
+<br>
+
+<h2>
+{{startdac}}
+{{drums1}}
+{{drums2}}
+{{slowdrums}}
+{{bassline}}
+{{chords}}
+{{arp1}}
+{{arp2}}
+{{vibes}}
+{{sliderVal1}}
+{{drums1Slider}}
+{{drums2Slider}}
+{{slowdrumsSlider}}
+{{basslineSlider}}
+{{chordsSlider}}
+{{arp1Slider}}
+{{arp2Slider}}
+{{vibesSlider}}
+{{drums1SpeedSlider}}
+{{drums2SpeedSlider}}
+{{slowdrumsSpeedSlider}}
+{{basslineSpeedSlider}}
+{{chordsSpeedSlider}}
+{{arp1SpeedSlider}}
+{{arp2SpeedSlider}}
+{{vibesSpeedSlider}}
+</h2>
 
 </template>
