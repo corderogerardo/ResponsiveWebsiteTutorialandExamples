@@ -1,0 +1,8 @@
+ meteor add iron:router accounts-ui accounts-password twbs:bootstrap ryw:blog 
+ meteor remove autopublish , insecure
+
+ for profuction:
+ meteor --production
+
+ for development
+ meteor --development
