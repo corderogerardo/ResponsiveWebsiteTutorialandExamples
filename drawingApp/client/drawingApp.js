@@ -50,7 +50,7 @@ Template.wall.events({
 
   "click button.blue": function () {
     lastX=0;
-    lastY=0;
+    lastY=0;http://pregrado.uny.edu.ve/aonline/inscripcion/logon.asp
     strokeColor = "blue";
   },
 
